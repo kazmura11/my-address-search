@@ -14,46 +14,46 @@
 		<form id="searchForm" class="searchForm" method="get">
 			<div class="form-inline">
 				<div class="form-group">
-					<label style="width: 100px;">地方ｺｰﾄﾞ</label>
+					<label style="width: 100px;" class="form-label-sm">地方ｺｰﾄﾞ</label>
 					<div class="input-group" style="width: 80px;">
-						<input type="text" class="form-control" autocomplete="off" 
+						<input type="text" class="form-control form-control-sm" autocomplete="off" 
 							id="governmentCode" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label style="width: 100px;">旧郵便番号</label>
+					<label style="width: 100px;" class="form-label-sm">旧郵便番号</label>
 					<div class="input-group" style="width: 80px;">
-						<input type="text" class="form-control" autocomplete="off"
+						<input type="text" class="form-control form-control-sm" autocomplete="off"
 							id="oldZipCode" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label style="width: 100px;">郵便番号</label>
+					<label style="width: 100px;" class="form-label-sm">郵便番号</label>
 					<div class="input-group" style="width: 100px;">
-						<input type="text" class="form-control" autocomplete="off"
+						<input type="text" class="form-control form-control-sm" autocomplete="off"
 							id="zipCode" />
 					</div>
 				</div>
 			</div>
 			<div class="form-inline">
 				<div class="form-group">
-					<label style="width: 100px;">都道府県ｶﾅ</label>
+					<label style="width: 100px;" class="form-label-sm">都道府県ｶﾅ</label>
 					<div class="input-group" style="width: 260px;">
-						<input type="text" class="form-control" autocomplete="off"
+						<input type="text" class="form-control form-control-sm" autocomplete="off"
 							id="kanaPrefecture" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label style="width: 100px;">市区町村ｶﾅ</label>
+					<label style="width: 100px;" class="form-label-sm">市区町村ｶﾅ</label>
 					<div class="input-group" style="width: 260px;">
-						<input type="text" class="form-control" autocomplete="off"
+						<input type="text" class="form-control form-control-sm" autocomplete="off"
 							id="kanaCity" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label style="width: 100px;">町域名ｶﾅ</label>
+					<label style="width: 100px;" class="form-label-sm">町域名ｶﾅ</label>
 					<div class="input-group" style="width: 260px;">
-						<input type="text" class="form-control" autocomplete="off"
+						<input type="text" class="form-control form-control-sm" autocomplete="off"
 							id="kanaDistrict" />
 					</div>
 				</div>
@@ -61,23 +61,23 @@
 			
 			<div class="form-inline">
 				<div class="form-group">
-					<label style="width: 100px;">都道府県</label>
+					<label style="width: 100px;" class="form-label-sm">都道府県</label>
 					<div class="input-group" style="width: 260px;">
-						<input type="text" class="form-control" autocomplete="off"
+						<input type="text" class="form-control form-control-sm" autocomplete="off"
 							id="prefecture" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label style="width: 100px;">市区町村</label>
+					<label style="width: 100px;" class="form-label-sm">市区町村</label>
 					<div class="input-group" style="width: 260px;">
-						<input type="text" class="form-control" autocomplete="off"
+						<input type="text" class="form-control form-control-sm" autocomplete="off"
 							id="city" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label style="width: 100px;">町域名</label>
+					<label style="width: 100px;" class="form-label-sm">町域名</label>
 					<div class="input-group" style="width: 260px;">
-						<input type="text" class="form-control" autocomplete="off"
+						<input type="text" class="form-control form-control-sm" autocomplete="off"
 							id="district" />
 					</div>
 				</div>
@@ -223,11 +223,11 @@
 				},
 			},
 			columns: [
-				{ data: 'governmentCode', width: '60px' },
+				{ data: 'governmentCode', width: '50px' },
 				{ data: 'oldZipCode', width: '50px' },
 				{ data: 'zipCode', width: '50px' },
 				{ data: 'kanaPrefecture', width: '140px' },
-				{ data: 'kanaCity', width: '160px' },
+				{ data: 'kanaCity', width: '140px' },
 				{ data: 'kanaDistrict', width: '140px' },
 				{ data: 'prefecture', width: '60px' },
 				{ data: 'city', width: '160px' },
@@ -244,13 +244,14 @@
 					data: 'chomeFlag',
 					render: function(data, type, row) { return !data ? 0 : 1 },
 				},
-				{ data: 'updatingCode' },
+				{ data: 'updatingCode', width: '50px' },
 				{ data: 'modifiedReason' },
 				{
 					data: 'address_id',
 					render: function(data, type, row, meta) {
 						return '<td></td>';
-					}
+					},
+					width: '50px'
 				}
 			]
 		})

@@ -11,46 +11,46 @@
 	<form id="searchForm" class="searchForm" th:action="@{/member/addresses}" th:object="${indexForm}" method="get">
 		<div class="form-inline">
 			<div class="form-group">
-				<label style="width: 100px;">地方ｺｰﾄﾞ</label>
+				<label style="width: 100px;" class="form-label-sm">地方ｺｰﾄﾞ</label>
 				<div class="input-group" style="width: 80px;">
-					<input type="text" class="form-control" autocomplete="off"
+					<input type="text" class="form-control form-control-sm" autocomplete="off"
 						th:field="*{governmentCode}" />
 				</div>
 			</div>
 			<div class="form-group">
-				<label style="width: 100px;">旧郵便番号</label>
+				<label style="width: 100px;" class="form-label-sm">旧郵便番号</label>
 				<div class="input-group" style="width: 80px;">
-					<input type="text" class="form-control" autocomplete="off"
+					<input type="text" class="form-control form-control-sm" autocomplete="off"
 						th:field="*{oldZipCode}" />
 				</div>
 			</div>
 			<div class="form-group">
-				<label style="width: 100px;">郵便番号</label>
+				<label style="width: 100px;" class="form-label-sm">郵便番号</label>
 				<div class="input-group" style="width: 100px;">
-					<input type="text" class="form-control" autocomplete="off"
+					<input type="text" class="form-control form-control-sm" autocomplete="off"
 						th:field="*{zipCode}" />
 				</div>
 			</div>
 		</div>
 		<div class="form-inline">
 			<div class="form-group">
-				<label style="width: 100px;">都道府県ｶﾅ</label>
+				<label style="width: 100px;" class="form-label-sm">都道府県ｶﾅ</label>
 				<div class="input-group" style="width: 260px;">
-					<input type="text" class="form-control" autocomplete="off"
+					<input type="text" class="form-control form-control-sm" autocomplete="off"
 						th:field="*{kanaPrefecture}" />
 				</div>
 			</div>
 			<div class="form-group">
-				<label style="width: 100px;">市区町村ｶﾅ</label>
+				<label style="width: 100px;" class="form-label-sm">市区町村ｶﾅ</label>
 				<div class="input-group" style="width: 260px;">
-					<input type="text" class="form-control" autocomplete="off"
+					<input type="text" class="form-control form-control-sm" autocomplete="off"
 						th:field="*{kanaCity}" />
 				</div>
 			</div>
 			<div class="form-group">
-				<label style="width: 100px;">町域名ｶﾅ</label>
+				<label style="width: 100px;" class="form-label-sm">町域名ｶﾅ</label>
 				<div class="input-group" style="width: 260px;">
-					<input type="text" class="form-control" autocomplete="off"
+					<input type="text" class="form-control form-control-sm" autocomplete="off"
 						th:field="*{kanaDistrict}" />
 				</div>
 			</div>
@@ -58,23 +58,23 @@
 		
 		<div class="form-inline">
 			<div class="form-group">
-				<label style="width: 100px;">都道府県</label>
+				<label style="width: 100px;" class="form-label-sm">都道府県</label>
 				<div class="input-group" style="width: 260px;">
-					<input type="text" class="form-control" autocomplete="off"
+					<input type="text" class="form-control form-control-sm" autocomplete="off"
 						th:field="*{prefecture}" />
 				</div>
 			</div>
 			<div class="form-group">
-				<label style="width: 100px;">市区町村</label>
+				<label style="width: 100px;" class="form-label-sm">市区町村</label>
 				<div class="input-group" style="width: 260px;">
-					<input type="text" class="form-control" autocomplete="off"
+					<input type="text" class="form-control form-control-sm" autocomplete="off"
 						th:field="*{city}" />
 				</div>
 			</div>
 			<div class="form-group">
-				<label style="width: 100px;">町域名</label>
+				<label style="width: 100px;" class="form-label-sm">町域名</label>
 				<div class="input-group" style="width: 260px;">
-					<input type="text" class="form-control" autocomplete="off"
+					<input type="text" class="form-control form-control-sm" autocomplete="off"
 						th:field="*{district}" />
 				</div>
 			</div>

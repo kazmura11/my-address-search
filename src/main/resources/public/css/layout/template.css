@@ -79,7 +79,7 @@ thead th {
 
 #main-area {
     padding: 0px;
-    width: 1260px;
+    width: 1360px;
 }
 
 #sidebar {
@@ -144,5 +144,9 @@ thead th {
 }
 
 .pager {
-	margin: 10px 0;
+    margin: 10px 0;
+}
+
+.table thead th, .table tbody td {
+    padding: 0;
 }
