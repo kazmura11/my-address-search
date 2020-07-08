@@ -32,8 +32,8 @@ Flywayを使うと自動で、flyway_schema_historyというディレクトリ�
 参考: http://www.kojion.com/posts/806  
 
 # 郵便番号データについて
-http://zipcloud.ibsnet.co.jp/
-元のken-all.csvは様々問題があるので、よくある前処理を事前に行ってくれているCSVを利用しています。
+http://zipcloud.ibsnet.co.jp/  
+元のken-all.csvは様々問題があるので、よくある前処理を事前に行ってくれているCSVを利用しています。  
 
 # ログインユーザ
 ID: demo@example.com  
@@ -52,11 +52,11 @@ https://github.com/darrachequesne/spring-data-jpa-datatables
 https://frontbackend.com/thymeleaf/spring-boot-bootstrap-thymeleaf-datatable  
 
 デフォルトでは  
-http://localhost:8080/foo?draw=1&column[0][data]=bar&order[0][column]=0&order[0][dir]=asc&start=100&length=100&search[value]=&search[regex]=false  
+`http://localhost:8080/foo?draw=1&column[0][data]=bar&order[0][column]=0&order[0][dir]=asc&start=100&length=100&search[value]=&search[regex]=false`  
 のようなクエリが生成される  
 この中で、配列の配列（というより配列のハッシュなのだが…）`column[0][data]`はSpringでは対応していないので、`column[0].data`のように変換してあげる必要がある。  
-こうすればJava側で`List<T>`で受け取れる。
-そのために、[jquery.spring-friendly.js](https://github.com/darrachequesne/spring-data-jpa-datatables/blob/master/jquery.spring-friendly.js)を使用する。
+こうすればJava側で`List<T>`で受け取れる。  
+そのために、[jquery.spring-friendly.js](https://github.com/darrachequesne/spring-data-jpa-datatables/blob/master/jquery.spring-friendly.js)を使用する。  
 
 ### 気が向いたらやりたいこと
 
@@ -64,4 +64,7 @@ http://localhost:8080/foo?draw=1&column[0][data]=bar&order[0][column]=0&order[0]
   
 ■Vue版でのソート  
 https://github.com/xaksis/vue-good-table  
+
+■その他手抜き実装とか不備とか修正  
+
 
