@@ -1,0 +1,31 @@
+spring:
+  thymeleaf:
+    prefix: classpath:/templates
+
+  datasource:
+    url: jdbc:mariadb://localhost:3306/my_address_search
+    username: demo
+    password: demo
+  profiles:
+    include: common
+  flyway:
+    locations: classpath:/db/migration
+
+server:
+  servlet:
+    session:
+      timeout: 7200
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain,text/css,application/javascript
+
+logging:
+  file: "/var/log/my-address-search.log"
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS}[%thread][%-5level][%-40.40logger{39}] :%msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS}[%thread][%-5level][%-40.40logger{39}] :%msg%n"
+  level:
+    root: INFO
+    com.example: DEBUG
+    org.hibernate: ERROR
+

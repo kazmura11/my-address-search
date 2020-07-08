@@ -1,0 +1,19 @@
+form > .form-inline label {
+	justify-content: start;
+}
+
+.form-inline > * {
+	margin: 5px;
+}
+
+.form-group > * {
+	margin: 0 5px;
+}
+
+.form-inline > label {
+	margin: 0 10px;
+}
+
+form > .form-group {
+	margin: 10px 0;
+}

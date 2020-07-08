@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+     th:fragment="layout (title, link, body)">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+	<script th:src="@{/vendor/jquery/jquery-3.3.1.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/layout/template.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/vendor/bootstrap/dist/css/bootstrap.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/vendor/font-awesome/5.0.13/css/fontawesome-all.min.css}" type="text/css">
+    <th:block th:if="${link != null}" th:insert="${link}"></th:block>
+    <title th:replace="${title}">タイトル</title>
+</head>
+
+<body>
+<header id="header" class="header">
+    <div id="header-title">
+        <span class="title" th:include="${title}"></span>
+    </div>
+</header>
+<div class="d-flex flex-nowrap">
+    <div id="sidebar">
+        <div class="label-nav">
+            ユーザ名: <br />
+            <div style="margin-left: 10px;" sec:authentication="principal.user.name"></div>
+        </div>
+        <a class="nav-link" href="/member/addresses">住所一覧</a>
+        <a class="nav-link" href="/member/addresses/ajax">住所一覧(Ajax)</a>
+        <a class="nav-link" href="/member/addresses/jq-dt">住所一覧(DataTable)</a>
+        <form th:action="@{/member/logout}" method="post">
+            <button type="submit" class="nav-logout btn btn-primary" value="logout">Logout</button>
+        </form>
+    </div>
+    <div id="main-area">
+        <div id="main-content">
+            <div th:replace="${body}"></div>
+        </div>
+    </div>
+    <div id="loading-spinner" style="display: none;">
+        <div id="loading"><img src="/img/spinner.gif" width="50" height="50" alt="Loading..." /></div>
+        <div id="fade"></div>
+    </div>
+</div>
+</body>
+
+</html>

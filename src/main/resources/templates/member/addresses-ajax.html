@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/template :: layout (~{::title},~{::link},~{::body})}">
+<head>
+<meta charset="UTF-8" />
+<title>住所一覧(Ajax)</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/member/address-ajax.css}" />
+</head>
+
+
+<body>
+	<div id="app">
+		<form id="searchForm" class="searchForm" method="get">
+			<div class="form-inline">
+				<div class="form-group">
+					<label style="width: 100px;">地方ｺｰﾄﾞ</label>
+					<div class="input-group" style="width: 80px;">
+						<input type="text" class="form-control" autocomplete="off" 
+							v-model="governmentCode" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label style="width: 100px;">旧郵便番号</label>
+					<div class="input-group" style="width: 80px;">
+						<input type="text" class="form-control" autocomplete="off"
+							v-model="oldZipCode" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label style="width: 100px;">郵便番号</label>
+					<div class="input-group" style="width: 100px;">
+						<input type="text" class="form-control" autocomplete="off"
+							v-model="zipCode" />
+					</div>
+				</div>
+			</div>
+			<div class="form-inline">
+				<div class="form-group">
+					<label style="width: 100px;">都道府県ｶﾅ</label>
+					<div class="input-group" style="width: 260px;">
+						<input type="text" class="form-control" autocomplete="off"
+							v-model="kanaPrefecture" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label style="width: 100px;">市区町村ｶﾅ</label>
+					<div class="input-group" style="width: 260px;">
+						<input type="text" class="form-control" autocomplete="off"
+							v-model="kanaCity" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label style="width: 100px;">町域名ｶﾅ</label>
+					<div class="input-group" style="width: 260px;">
+						<input type="text" class="form-control" autocomplete="off"
+							v-model="kanaDistrict" />
+					</div>
+				</div>
+			</div>
+			
+			<div class="form-inline">
+				<div class="form-group">
+					<label style="width: 100px;">都道府県</label>
+					<div class="input-group" style="width: 260px;">
+						<input type="text" class="form-control" autocomplete="off"
+							v-model="prefecture" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label style="width: 100px;">市区町村</label>
+					<div class="input-group" style="width: 260px;">
+						<input type="text" class="form-control" autocomplete="off"
+							v-model="city" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label style="width: 100px;">町域名</label>
+					<div class="input-group" style="width: 260px;">
+						<input type="text" class="form-control" autocomplete="off"
+							v-model="district" />
+					</div>
+				</div>
+			</div>
+	
+			<div class="form-group">
+				<div class="col-md-10 text-center">
+					<button v-on:click="getData" type="button" class="btn btn-primary mr-2">検索</button>
+					<button type="button" class="btn btn-secondary clear-button">クリア</button>
+				</div>
+			</div>
+			<!-- message -->
+			<div v-for="err in errorMessages" class="alert alert-warning">
+				{{ err.message }}
+			</div>
+		</form>
+	
+		<div v-show="page">
+			1ページあたり {{ page.size }}件で表示 全{{ totalCount }}件
+		</div>
+		<table class="fixed-table table-bordered table-hover">
+			<colgroup>
+				<col style="width: 50px;" />
+				<col style="width: 50px;" />
+				<col style="width: 50px;" />
+				<col />
+				<col />
+				<col style="width: 140px;" />
+				<col />
+				<col style="width: 140px;" /> <!-- 市区町村 -->
+				<col />
+				<col />
+				<col />
+				<col />
+				<col />
+				<col />
+				<col />
+			</colgroup>
+			<thead>
+				<tr class="table-primary">
+					<th scope="col">地方ｺｰﾄﾞ</th>
+					<th scope="col">旧<br />郵便<br />番号</th>
+					<th scope="col">郵便<br />番号</th>
+					<th scope="col">都道府県ｶﾅ</th>
+					<th scope="col">市区町村ｶﾅ</th>
+					<th scope="col">町域ｶﾅ</th>
+					<th scope="col">都道府県</th>
+					<th scope="col">市区町村</th>
+					<th scope="col">町域</th>
+					<th scope="col">町域<br />ﾌﾗｸﾞ</th>
+					<th scope="col">小字<br />ﾌﾗｸﾞ</th>
+					<th scope="col">丁目<br />ﾌﾗｸﾞ</th>
+					<th scope="col">更新の<br />表示</th>
+					<th scope="col">変更<br />理由</th>
+					<th scope="col">編集/削除</th>
+				</tr>
+			</thead>
+			<tbody v-show="page">
+				<tr v-for="(c, index) in page.content">
+					<td>{{ c.governmentCode }}</td>
+					<td>{{ c.oldZipCode }}</td>
+					<td>{{ c.zipCode }}</td>
+					<td>{{ c.kanaPrefecture }}</td>
+					<td>{{ c.kanaCity }}</td>
+					<td>{{ c.kanaDistrict }}</td>
+					<td>{{ c.prefecture }}</td>
+					<td>{{ c.city }}</td>
+					<td>{{ c.district }}</td>
+					<td>{{ !c.multipleDistrictFlag ? 0 : 1 }}</td>
+					<td>{{ !c.specialKoazaFlag ? 0 : 1 }}</td>
+					<td>{{ !c.chomeFlag ? 0 : 1 }}</td>
+					<td>{{ c.updatingCode }}</td>
+					<td>{{ c.modifiedReason }}</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<div v-show="page">
+			1ページあたり{{ page.size }}件で表示 全 {{ totalCount }}件
+		</div>
+		<div class="pager align-right" v-show="page">
+			<!-- ページャー -->
+			<div th:replace="/parts/_pager-ajax::pager"></div>
+			<div class="text-right">{{ page.number }} / {{ page.totalPages }}ページ</div>
+		</div>
+	</div>
+<script type="text/javascript" th:src="@{/vendor/vue-v2.6.10/vue.min.js}"></script>
+<script type="text/javascript" th:src="@{/vendor/axios-0.18.0/dist/axios.min.js}"></script>
+<script>
+var app = new Vue({
+	el: '#app',
+	data: {
+		governmentCode: "",
+		oldZipCode: "",
+		zipCode: "",
+		kanaPrefecture: "",
+		kanaCity: "",
+		kanaDistrict: "",
+		prefecture: "",
+		city: "",
+		district: "",
+		message: "",
+		errorMessages: "",
+		totalCount: 0,
+		page: 0,
+		size: 0
+	},
+	methods: {
+		getData: function(page, size) {
+			var params = {
+				governmentCode: this.governmentCode,
+				oldZipCode: this.oldZipCode,
+				zipCode: this.zipCode,
+				kanaPrefecture: this.kanaPrefecture,
+				kanaCity: this.kanaCity,
+				kanaDistrict: this.kanaDistrict,
+				prefecture: this.prefecture,
+				city: this.city,
+				district: this.district,
+				page: page == null ? 0 : page,
+				size: size == null ? 0 : size
+			};
+			axios
+				.get('/api/member/addresses', { params: params })
+				// { data: {}, status: 200, statusText, headers: {}, config: {}, request: ...} の形で返ってくる
+				// ちなみにdataのなかは自分で定義したAjaxResponse型でmessage, totalCount, page, contentが入っている
+				.then(function(res) {
+					app.message = res.data.message;
+					app.totalCount = res.data.totalCount;
+					app.page = res.data.page;
+					app.errorMessages = "";
+					// AjaxではURLが変わらない問題があるのでブラウザのURLを書き換える
+					// 自作common.jsのjsObjToUriParam(param)を使う
+					// var queryParam = jsObjToUriParam(params);
+					// window.history.pushState(null, null, '/member/addresses/ajax?' + queryParam);
+				})
+				.catch(function(res) {
+					app.errorMessages = res.response.data;
+				});
+		},
+	},
+	mounted: function() {
+		this.getData();
+	},
+});
+</script>
+</body>

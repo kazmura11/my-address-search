@@ -1,0 +1,15 @@
+https://datatables.net/download/index
+
+Step 1. Choose a styling framework
+ Bootstrap 4The latest iteration of the ever popular Bootstrap framework.
+
+Step 2. Select packages v4.1.1
+ DataTablesEnhance HTML tables with advanced interaction controls.v1.10.21
+
+Step 3. Pick a download method
+ Download
+The files required for the link and script tags shown above can be downloaded using the button below. The package is downloaded as a zip file which should be unzipped and uploaded to your web-server.
+
+<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
+ 
+<script type="text/javascript" src="DataTables/datatables.min.js"></script>

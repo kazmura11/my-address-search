@@ -1,0 +1,148 @@
+* {
+    font-size: 16px;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+h1 {
+    font-size: 26px;
+}
+
+h2 {
+    font-size: 22px;
+}
+
+.content-name {
+    margin: 10px;
+}
+
+.align-left {
+    float: left;
+}
+.align-left:after {
+    content: ".";
+    display: block;
+    height: 0;
+    font-size:0;
+    clear: both;
+    visibility:hidden;
+}
+.align-right {
+    float: right;
+}
+.align-right:after {
+    content: ".";
+    display: block;
+    height: 0;
+    font-size:0;
+    clear: both;
+    visibility:hidden;
+}
+
+
+thead th {
+	text-align:center;
+	padding: 5px;
+}
+
+.boot-form {
+    margin-left: 40px;
+}
+
+.modal-lg {
+	max-width: 900px;
+}
+
+#header {
+    padding: 10px;
+    height: 60px;
+}
+
+#header-logo-area {
+    position: relative;
+}
+
+#header-logo-area .logo {
+    left: 30px;
+}
+
+#header-title > .title {
+    font-size: 24px;
+    padding-left: 180px;
+}
+
+#main-area {
+    padding: 0px;
+    width: 1260px;
+}
+
+#sidebar {
+    width: 180px;
+    min-width: 180px;
+    min-height: 100vh;
+}
+
+.label-nav {
+    color: #fb3737;
+    padding: 5px 0;
+    margin: 5px 15px;
+}
+
+.nav-logout {
+	margin: 15px 10px 5px !important;
+}
+
+#sidebar .nav-link {
+    padding: 5px 15px;
+}
+
+#sidebar a {
+    display: block;
+}
+
+#sidebar a:hover {
+    background-color: #46aef3;
+    text-decoration: none;
+}
+
+.row-no-margin {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#main-content {
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+
+#loading {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -25px; /* harlf of height */
+    margin-left: -25px; /* half of width */
+    z-index: 10000;
+}
+#fade {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.3;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 50;
+}
+
+.pager {
+	margin: 10px 0;
+}

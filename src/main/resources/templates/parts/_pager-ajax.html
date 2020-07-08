@@ -1,0 +1,28 @@
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<!-- Vue用のpager -->
+<div th:fragment="pager">
+	<ul class='pagination pagination-centered'>
+		<li v-bind:class="[page.firstPage ? 'page-item disabled' : 'page-item']" style="display: inline">
+			<span class="page-link" v-show="page.firstPage">«</span>
+			<a class="page-link" v-show="!page.firstPage" v-on:click="getData(0, page.size)" href="javascript:void(0)">«</a>
+		</li>
+		<li v-bind:class="[page.hasPreviousPage ? 'page-item' : 'page-item disabled']" style="display: inline">
+			<span class="page-link" v-show="!page.hasPreviousPage">&lt;</span>
+			<a class="page-link" v-show="page.hasPreviousPage" v-on:click="getData(page.number - 2, page.size)" href="javascript:void(0)">&lt;</a>
+		</li>
+		<li v-for="item in page.items" v-bind:class="[item.current ? 'page-item active' : 'page-item']" style="display: inline">
+			<span class="page-link" v-show="item.current">{{item.number}}</span>
+			<a class="page-link" v-show="!item.current" v-on:click="getData(item.number - 1, page.size)" href="javascript:void(0)">
+				<span>{{item.number}}</span>
+			</a>
+		</li>
+		<li v-bind:class="[page.hasNextPage ? 'page-item' : 'page-item disabled']" style="display: inline">
+			<span class="page-link" v-show="!page.hasNextPage">&gt;</span>
+			<a class="page-link" v-show="page.hasNextPage" v-on:click="getData(page.number, page.size)" href="javascript:void(0)">&gt;</a>
+		</li>
+		<li v-bind:class="[page.lastPage ? 'page-item disabled' : 'page-item']" style="display: inline">
+			<span class="page-link" v-show="page.lastPage">»</span>
+			<a class="page-link" v-show="!page.lastPage" v-on:click="getData(page.totalPages - 1, page.size)" href="javascript:void(0)">»</a>
+		</li>
+	</ul>
+</div>
